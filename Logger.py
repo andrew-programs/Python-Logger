@@ -29,6 +29,14 @@ class Logger:
                 pass
         except FileExistsError:
             pass
+    
+    def renameLog(self):
+        # Will attempt to rename file as each log happens so no mismatching of names/content.
+        newPath = f'{self.directory}{self.separator}{datetime.now():%m-%d-%Y %H-%M-%S}.log'
+        
+        if self.filePath != newPath:
+            os.rename(self.filePath, newPath)
+            self.filePath = newPath
             
 
     def log(self, message: str, importance: str=None) -> str:
@@ -57,12 +65,7 @@ class Logger:
                 else:
                     file.write(f'{datetime.now()} | {message}\n')
             
-            # Will attempt to rename file as each log happens so no mismatching of names/content.
-            newPath = f'{self.directory}{self.separator}{datetime.now():%m-%d-%Y %H:%M:%S}.log'
-
-            if self.filePath != newPath:
-                os.rename(self.filePath, newPath)
-                self.filePath = newPath
+            renameLog()
         except Exception:
             pass
     
@@ -83,12 +86,7 @@ class Logger:
             with open(f'{self.filePath}', 'a') as file:
                 file.write(f'{datetime.now()} | LOW | {message}\n')
             
-            # Will rename file as each log happens so no mismatching of names/content and updates object's file_path.
-            newPath = f'{self.directory}{self.separator}{datetime.now():%m-%d-%Y %H:%M:%S}.log'
-
-            if self.filePath != newPath:
-                os.rename(self.filePath, newPath)
-                self.filePath = newPath
+            renameLog()
         except Exception:
             pass
         
@@ -109,12 +107,7 @@ class Logger:
             with open(f'{self.filePath}', 'a') as file:
                 file.write(f'{datetime.now()} | MEDIUM | {message}\n')
             
-            # Will rename file as each log happens so no mismatching of names/content and updates object's file_path.
-            newPath = f'{self.directory}{self.separator}{datetime.now():%m-%d-%Y %H:%M:%S}.log'
-
-            if self.filePath != newPath:
-                os.rename(self.filePath, newPath)
-                self.filePath = newPath
+            renameLog()
         except Exception:
             pass
     
@@ -135,12 +128,7 @@ class Logger:
             with open(f'{self.filePath}', 'a') as file:
                 file.write(f'{datetime.now()} | HIGH | {message}\n')
             
-            # Will rename file as each log happens so no mismatching of names/content and updates object's file_path.
-            newPath = f'{self.directory}{self.separator}{datetime.now():%m-%d-%Y %H:%M:%S}.log'
-
-            if self.filePath != newPath:
-                os.rename(self.filePath, newPath)
-                self.filePath = newPath
+            renameLog()
         except Exception:
             pass
     
@@ -161,12 +149,7 @@ class Logger:
             
             with open(f'{self.filePath}', 'a') as file:
                 file.write(f'{datetime.now()} | INFO | {message}\n')
-            
-            # Will attempt to rename file as each log happens so no mismatching of names/content.
-            newPath = f'{self.directory}{self.separator}{datetime.now():%m-%d-%Y %H:%M:%S}.log'
-
-            if self.filePath != newPath:
-                os.rename(self.filePath, newPath)
-                self.filePath = newPath
+       
+            renameLog()
         except Exception:
             pass
