@@ -65,7 +65,7 @@ class Logger:
                 else:
                     file.write(f'{datetime.now()} | {message}\n')
             
-            renameLog()
+            self.renameLog()
         except Exception:
             pass
     
@@ -86,7 +86,7 @@ class Logger:
             with open(f'{self.filePath}', 'a') as file:
                 file.write(f'{datetime.now()} | LOW | {message}\n')
             
-            renameLog()
+            self.renameLog()
         except Exception:
             pass
         
@@ -107,7 +107,7 @@ class Logger:
             with open(f'{self.filePath}', 'a') as file:
                 file.write(f'{datetime.now()} | MEDIUM | {message}\n')
             
-            renameLog()
+            self.renameLog()
         except Exception:
             pass
     
@@ -128,7 +128,7 @@ class Logger:
             with open(f'{self.filePath}', 'a') as file:
                 file.write(f'{datetime.now()} | HIGH | {message}\n')
             
-            renameLog()
+            self.renameLog()
         except Exception:
             pass
     
@@ -150,6 +150,6 @@ class Logger:
             with open(f'{self.filePath}', 'a') as file:
                 file.write(f'{datetime.now()} | INFO | {message}\n')
        
-            renameLog()
+            self.renameLog()
         except Exception:
             pass
