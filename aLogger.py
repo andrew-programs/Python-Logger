@@ -3,6 +3,7 @@ from datetime import datetime
 from os import rename
 
 class Logger:
+    # Initializer
     def __init__(self, directory: str):
         if directory.endswith('/') or directory.endswith('\\'):
             self.directory = directory[:-1]
