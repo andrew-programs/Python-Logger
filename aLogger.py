@@ -112,7 +112,7 @@ class Logger:
         except Exception as exception:
             print(f'Could not print to log due to exception : {exception}')
     
-    # Renames current log file.
+    # "Private" method that renames current log file.
     def __renameLog(self) -> None:
         """Method that renames the current log, please only use this if you have some idea of what you're doing."""
         
